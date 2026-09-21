@@ -1,0 +1,206 @@
+Using pip 26.2.1 from /Users/sky/Desktop/project/M.Tech/ai-rag-software-engineering-assistant/backend/.venv/lib/python3.11/site-packages/pip (python 3.11)
+Collecting faiss-cpu
+  Using cached faiss_cpu-1.12.0.tar.gz (69 kB)
+  Installing build dependencies: started
+  Running command installing build dependencies for faiss-cpu
+  Using pip 26.2.1 from /Users/sky/Desktop/project/M.Tech/ai-rag-software-engineering-assistant/backend/.venv/lib/python3.11/site-packages/pip (python 3.11)
+  Collecting setuptools
+    Obtaining dependency information for setuptools from https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl.metadata
+    Using cached setuptools-84.0.0-py3-none-any.whl.metadata (6.6 kB)
+  Collecting wheel
+    Obtaining dependency information for wheel from https://files.pythonhosted.org/packages/2e/29/69cfbb602cd91690c55d38ba9fe53e6a7e76a6fa647bf38f19c138d25449/wheel-0.48.0-py3-none-any.whl.metadata
+    Using cached wheel-0.48.0-py3-none-any.whl.metadata (2.3 kB)
+    Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/3a/be/650f9c091ef71cb01d735775d554e068752d3ff63d7943b26316dc401749/numpy-1.21.2.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+    Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/5f/d6/ad58ded26556eaeaa8c971e08b6466f17c4ac4d786cd3d800e26ce59cc01/numpy-1.21.3.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+    Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/fb/48/b0708ebd7718a8933f0d3937513ef8ef2f4f04529f1f66ca86d873043921/numpy-1.21.4.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+    Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/c2/a8/a924a09492bdfee8c2ec3094d0a13f2799800b4fdc9c890738aeeb12c72e/numpy-1.21.5.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+    Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/45/b7/de7b8e67f2232c26af57c205aaad29fe17754f793404f59c8a730c7a191a/numpy-1.21.6.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+    Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/d3/e1/f2fe8f6113a657a1da83b358b16755e528a602c6976a43724a88f42b482a/numpy-2.5.0rc1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/e7/05/3d27272d30698dc0ecb7fdfaa41ad70303b444f81722bb99bce1d818638a/numpy-2.5.0.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/22/fd/89965aa4ac08c74998539fcbf24fa3540f3e15237fbeb6bcf9c908f4aade/numpy-2.5.1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/9a/80/db0b4559e57ec36362bedbb05530a87fafbcb6067708c946967a41d449e7/numpy-2.5.2.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/13/01/11703282db468b85f6f7b8c7f22d058de5970d5c7e60a3a8aaa313c3de36/numpy-2.5.3.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+  Collecting numpy<3,>=2.0
+    Obtaining dependency information for numpy<3,>=2.0 from https://files.pythonhosted.org/packages/b3/49/ec46835a70be8fa6446c495126ac84fdb28cb2558e1620ffb87a10c8b64c/numpy-2.4.6-cp311-cp311-macosx_10_9_x86_64.whl.metadata
+    Using cached numpy-2.4.6-cp311-cp311-macosx_10_9_x86_64.whl.metadata (6.6 kB)
+  Collecting packaging>=24.0 (from wheel)
+    Obtaining dependency information for packaging>=24.0 from https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata
+    Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+  Using cached numpy-2.4.6-cp311-cp311-macosx_10_9_x86_64.whl (17.0 MB)
+  Using cached setuptools-84.0.0-py3-none-any.whl (818 kB)
+  Using cached wheel-0.48.0-py3-none-any.whl (33 kB)
+  Using cached packaging-26.3-py3-none-any.whl (129 kB)
+  Installing collected packages: setuptools, packaging, numpy, wheel
+    Creating /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-build-env-lmn6pqc8/overlay/bin
+    changing mode of /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-build-env-lmn6pqc8/overlay/bin/f2py to 755
+    changing mode of /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-build-env-lmn6pqc8/overlay/bin/numpy-config to 755
+    changing mode of /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-build-env-lmn6pqc8/overlay/bin/wheel to 755
+
+  Successfully installed numpy-2.4.6 packaging-26.3 setuptools-84.0.0 wheel-0.48.0
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Running command Getting requirements to build wheel
+  running egg_info
+  writing faiss_cpu.egg-info/PKG-INFO
+  writing dependency_links to faiss_cpu.egg-info/dependency_links.txt
+  writing requirements to faiss_cpu.egg-info/requires.txt
+  writing top-level names to faiss_cpu.egg-info/top_level.txt
+  reading manifest file 'faiss_cpu.egg-info/SOURCES.txt'
+  adding license file 'LICENSE'
+  adding license file 'NOTICE'
+  writing manifest file 'faiss_cpu.egg-info/SOURCES.txt'
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Running command Preparing metadata (pyproject.toml)
+  running dist_info
+  creating /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info
+  writing /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info/PKG-INFO
+  writing dependency_links to /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info/dependency_links.txt
+  writing requirements to /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info/requires.txt
+  writing top-level names to /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info/top_level.txt
+  writing manifest file '/private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info/SOURCES.txt'
+  reading manifest file '/private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info/SOURCES.txt'
+  adding license file 'LICENSE'
+  adding license file 'NOTICE'
+  writing manifest file '/private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu.egg-info/SOURCES.txt'
+  creating '/private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-modern-metadata-b1nk47_z/faiss_cpu-1.12.0.dist-info'
+  Preparing metadata (pyproject.toml): finished with status 'done'
+  Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/3a/be/650f9c091ef71cb01d735775d554e068752d3ff63d7943b26316dc401749/numpy-1.21.2.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+  Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/5f/d6/ad58ded26556eaeaa8c971e08b6466f17c4ac4d786cd3d800e26ce59cc01/numpy-1.21.3.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+  Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/fb/48/b0708ebd7718a8933f0d3937513ef8ef2f4f04529f1f66ca86d873043921/numpy-1.21.4.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+  Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/c2/a8/a924a09492bdfee8c2ec3094d0a13f2799800b4fdc9c890738aeeb12c72e/numpy-1.21.5.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+  Link requires a different Python (3.11.6 not in: '>=3.7,<3.11'): https://files.pythonhosted.org/packages/45/b7/de7b8e67f2232c26af57c205aaad29fe17754f793404f59c8a730c7a191a/numpy-1.21.6.zip (from https://pypi.org/simple/numpy/) (requires-python:>=3.7,<3.11)
+  Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/d3/e1/f2fe8f6113a657a1da83b358b16755e528a602c6976a43724a88f42b482a/numpy-2.5.0rc1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+  Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/e7/05/3d27272d30698dc0ecb7fdfaa41ad70303b444f81722bb99bce1d818638a/numpy-2.5.0.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+  Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/22/fd/89965aa4ac08c74998539fcbf24fa3540f3e15237fbeb6bcf9c908f4aade/numpy-2.5.1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+  Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/9a/80/db0b4559e57ec36362bedbb05530a87fafbcb6067708c946967a41d449e7/numpy-2.5.2.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+  Link requires a different Python (3.11.6 not in: '>=3.12'): https://files.pythonhosted.org/packages/13/01/11703282db468b85f6f7b8c7f22d058de5970d5c7e60a3a8aaa313c3de36/numpy-2.5.3.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+Collecting numpy<3.0,>=1.25.0 (from faiss-cpu)
+  Obtaining dependency information for numpy<3.0,>=1.25.0 from https://files.pythonhosted.org/packages/b3/49/ec46835a70be8fa6446c495126ac84fdb28cb2558e1620ffb87a10c8b64c/numpy-2.4.6-cp311-cp311-macosx_10_9_x86_64.whl.metadata
+  Using cached numpy-2.4.6-cp311-cp311-macosx_10_9_x86_64.whl.metadata (6.6 kB)
+Requirement already satisfied: packaging in ./.venv/lib/python3.11/site-packages (from faiss-cpu) (26.3)
+Using cached numpy-2.4.6-cp311-cp311-macosx_10_9_x86_64.whl (17.0 MB)
+Building wheels for collected packages: faiss-cpu
+  Building wheel for faiss-cpu (pyproject.toml): started
+  Running command Building wheel for faiss-cpu (pyproject.toml)
+  running bdist_wheel
+  running build
+  running build_py
+  running build_ext
+  building 'faiss._swigfaiss' extension
+  swigging third-party/faiss/faiss/python/swigfaiss.i to third-party/faiss/faiss/python/swigfaiss_wrap.cpp
+  swig -python -c++ -Doverride= -doxygen -Ithird-party/faiss -I/private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-build-env-lmn6pqc8/overlay/lib/python3.11/site-packages/numpy/_core/include -Ithird-party/faiss -I/usr/local/include -o third-party/faiss/faiss/python/swigfaiss_wrap.cpp third-party/faiss/faiss/python/swigfaiss.i
+  third-party/faiss/faiss/python/swigfaiss.i:312: Error: Unable to find 'faiss/impl/platform_macros.h'
+  third-party/faiss/faiss/python/swigfaiss.i:316: Error: Unable to find 'faiss/utils/ordered_key_value.h'
+  third-party/faiss/faiss/python/swigfaiss.i:317: Error: Unable to find 'faiss/utils/Heap.h'
+  third-party/faiss/faiss/python/swigfaiss.i:322: Error: Unable to find 'faiss/utils/AlignedTable.h'
+  third-party/faiss/faiss/python/swigfaiss.i:323: Error: Unable to find 'faiss/utils/partitioning.h'
+  third-party/faiss/faiss/python/swigfaiss.i:324: Error: Unable to find 'faiss/utils/hamming.h'
+  third-party/faiss/faiss/python/swigfaiss.i:325: Error: Unable to find 'faiss/utils/hamming_distance/common.h'
+  third-party/faiss/faiss/python/swigfaiss.i:508: Error: Unable to find 'faiss/utils/utils.h'
+  third-party/faiss/faiss/python/swigfaiss.i:512: Error: Unable to find 'faiss/utils/distances.h'
+  third-party/faiss/faiss/python/swigfaiss.i:513: Error: Unable to find 'faiss/utils/random.h'
+  third-party/faiss/faiss/python/swigfaiss.i:514: Error: Unable to find 'faiss/utils/sorting.h'
+  third-party/faiss/faiss/python/swigfaiss.i:516: Error: Unable to find 'faiss/MetricType.h'
+  third-party/faiss/faiss/python/swigfaiss.i:521: Error: Unable to find 'faiss/Index.h'
+  third-party/faiss/faiss/python/swigfaiss.i:523: Error: Unable to find 'faiss/impl/DistanceComputer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:525: Error: Unable to find 'faiss/impl/io.h'
+  third-party/faiss/faiss/python/swigfaiss.i:529: Error: Unable to find 'faiss/impl/maybe_owned_vector.h'
+  third-party/faiss/faiss/python/swigfaiss.i:530: Error: Unable to find 'faiss/impl/mapped_io.h'
+  third-party/faiss/faiss/python/swigfaiss.i:531: Error: Unable to find 'faiss/impl/zerocopy_io.h'
+  third-party/faiss/faiss/python/swigfaiss.i:534: Error: Unable to find 'faiss/IndexFlatCodes.h'
+  third-party/faiss/faiss/python/swigfaiss.i:535: Error: Unable to find 'faiss/IndexFlat.h'
+  third-party/faiss/faiss/python/swigfaiss.i:536: Error: Unable to find 'faiss/Clustering.h'
+  third-party/faiss/faiss/python/swigfaiss.i:538: Error: Unable to find 'faiss/utils/extra_distances.h'
+  third-party/faiss/faiss/python/swigfaiss.i:542: Error: Unable to find 'faiss/impl/Quantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:543: Error: Unable to find 'faiss/impl/ProductQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:544: Error: Unable to find 'faiss/impl/AdditiveQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:545: Error: Unable to find 'faiss/impl/residual_quantizer_encode_steps.h'
+  third-party/faiss/faiss/python/swigfaiss.i:546: Error: Unable to find 'faiss/impl/ResidualQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:547: Error: Unable to find 'faiss/impl/LocalSearchQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:548: Error: Unable to find 'faiss/impl/ProductAdditiveQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:549: Error: Unable to find 'faiss/impl/CodePacker.h'
+  third-party/faiss/faiss/python/swigfaiss.i:551: Error: Unable to find 'faiss/VectorTransform.h'
+  third-party/faiss/faiss/python/swigfaiss.i:552: Error: Unable to find 'faiss/IndexPreTransform.h'
+  third-party/faiss/faiss/python/swigfaiss.i:553: Error: Unable to find 'faiss/IndexRefine.h'
+  third-party/faiss/faiss/python/swigfaiss.i:554: Error: Unable to find 'faiss/IndexLSH.h'
+  third-party/faiss/faiss/python/swigfaiss.i:555: Error: Unable to find 'faiss/impl/PolysemousTraining.h'
+  third-party/faiss/faiss/python/swigfaiss.i:556: Error: Unable to find 'faiss/IndexPQ.h'
+  third-party/faiss/faiss/python/swigfaiss.i:557: Error: Unable to find 'faiss/IndexAdditiveQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:558: Error: Unable to find 'faiss/impl/io.h'
+  third-party/faiss/faiss/python/swigfaiss.i:560: Error: Unable to find 'faiss/invlists/InvertedLists.h'
+  third-party/faiss/faiss/python/swigfaiss.i:561: Error: Unable to find 'faiss/invlists/InvertedListsIOHook.h'
+  third-party/faiss/faiss/python/swigfaiss.i:563: Error: Unable to find 'faiss/invlists/BlockInvertedLists.h'
+  third-party/faiss/faiss/python/swigfaiss.i:564: Error: Unable to find 'faiss/invlists/DirectMap.h'
+  third-party/faiss/faiss/python/swigfaiss.i:565: Error: Unable to find 'faiss/IndexIVF.h'
+  third-party/faiss/faiss/python/swigfaiss.i:570: Error: Unable to find 'faiss/IVFlib.h'
+  third-party/faiss/faiss/python/swigfaiss.i:571: Error: Unable to find 'faiss/impl/ScalarQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:572: Error: Unable to find 'faiss/IndexScalarQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:573: Error: Unable to find 'faiss/IndexIVFSpectralHash.h'
+  third-party/faiss/faiss/python/swigfaiss.i:574: Error: Unable to find 'faiss/IndexIVFAdditiveQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:575: Error: Unable to find 'faiss/impl/HNSW.h'
+  third-party/faiss/faiss/python/swigfaiss.i:576: Error: Unable to find 'faiss/IndexHNSW.h'
+  third-party/faiss/faiss/python/swigfaiss.i:578: Error: Unable to find 'faiss/impl/kmeans1d.h'
+  third-party/faiss/faiss/python/swigfaiss.i:581: Error: Unable to find 'faiss/impl/NNDescent.h'
+  third-party/faiss/faiss/python/swigfaiss.i:582: Error: Unable to find 'faiss/IndexNNDescent.h'
+  third-party/faiss/faiss/python/swigfaiss.i:584: Error: Unable to find 'faiss/IndexIVFFlat.h'
+  third-party/faiss/faiss/python/swigfaiss.i:588: Error: Unable to find 'faiss/impl/NSG.h'
+  third-party/faiss/faiss/python/swigfaiss.i:599: Error: Unable to find 'faiss/IndexNSG.h'
+  third-party/faiss/faiss/python/swigfaiss.i:604: Error: Unable to find 'faiss/invlists/OnDiskInvertedLists.h'
+  third-party/faiss/faiss/python/swigfaiss.i:607: Error: Unable to find 'faiss/impl/lattice_Zn.h'
+  third-party/faiss/faiss/python/swigfaiss.i:608: Error: Unable to find 'faiss/IndexLattice.h'
+  third-party/faiss/faiss/python/swigfaiss.i:611: Error: Unable to find 'faiss/IndexIVFPQ.h'
+  third-party/faiss/faiss/python/swigfaiss.i:612: Error: Unable to find 'faiss/IndexIVFPQR.h'
+  third-party/faiss/faiss/python/swigfaiss.i:613: Error: Unable to find 'faiss/Index2Layer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:615: Error: Unable to find 'faiss/IndexFastScan.h'
+  third-party/faiss/faiss/python/swigfaiss.i:616: Error: Unable to find 'faiss/IndexAdditiveQuantizerFastScan.h'
+  third-party/faiss/faiss/python/swigfaiss.i:617: Error: Unable to find 'faiss/IndexPQFastScan.h'
+  third-party/faiss/faiss/python/swigfaiss.i:622: Error: Unable to find 'faiss/impl/simd_result_handlers.h'
+  third-party/faiss/faiss/python/swigfaiss.i:623: Error: Unable to find 'faiss/IndexIVFFastScan.h'
+  third-party/faiss/faiss/python/swigfaiss.i:624: Error: Unable to find 'faiss/IndexIVFAdditiveQuantizerFastScan.h'
+  third-party/faiss/faiss/python/swigfaiss.i:625: Error: Unable to find 'faiss/IndexIVFIndependentQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:627: Error: Unable to find 'faiss/IndexIVFPQFastScan.h'
+  third-party/faiss/faiss/python/swigfaiss.i:628: Error: Unable to find 'faiss/utils/quantize_lut.h'
+  third-party/faiss/faiss/python/swigfaiss.i:630: Error: Unable to find 'faiss/IndexBinary.h'
+  third-party/faiss/faiss/python/swigfaiss.i:631: Error: Unable to find 'faiss/IndexBinaryFlat.h'
+  third-party/faiss/faiss/python/swigfaiss.i:632: Error: Unable to find 'faiss/IndexBinaryIVF.h'
+  third-party/faiss/faiss/python/swigfaiss.i:633: Error: Unable to find 'faiss/IndexBinaryFromFloat.h'
+  third-party/faiss/faiss/python/swigfaiss.i:634: Error: Unable to find 'faiss/IndexBinaryHNSW.h'
+  third-party/faiss/faiss/python/swigfaiss.i:635: Error: Unable to find 'faiss/IndexBinaryHash.h'
+  third-party/faiss/faiss/python/swigfaiss.i:637: Error: Unable to find 'faiss/impl/ThreadedIndex.h'
+  third-party/faiss/faiss/python/swigfaiss.i:641: Error: Unable to find 'faiss/IndexShards.h'
+  third-party/faiss/faiss/python/swigfaiss.i:644: Error: Unable to find 'faiss/IndexShardsIVF.h'
+  third-party/faiss/faiss/python/swigfaiss.i:646: Error: Unable to find 'faiss/IndexReplicas.h'
+  third-party/faiss/faiss/python/swigfaiss.i:650: Error: Unable to find 'faiss/MetaIndexes.h'
+  third-party/faiss/faiss/python/swigfaiss.i:652: Error: Unable to find 'faiss/IndexRowwiseMinMax.h'
+  third-party/faiss/faiss/python/swigfaiss.i:654: Error: Unable to find 'faiss/utils/NeuralNet.h'
+  third-party/faiss/faiss/python/swigfaiss.i:658: Error: Unable to find 'faiss/IndexNeuralNetCodec.h'
+  third-party/faiss/faiss/python/swigfaiss.i:660: Error: Unable to find 'faiss/impl/RaBitQuantizer.h'
+  third-party/faiss/faiss/python/swigfaiss.i:661: Error: Unable to find 'faiss/IndexRaBitQ.h'
+  third-party/faiss/faiss/python/swigfaiss.i:662: Error: Unable to find 'faiss/IndexIVFRaBitQ.h'
+  third-party/faiss/faiss/python/swigfaiss.i:671: Error: Unable to find 'faiss/impl/AuxIndexStructures.h'
+  third-party/faiss/faiss/python/swigfaiss.i:672: Error: Unable to find 'faiss/impl/IDSelector.h'
+  third-party/faiss/faiss/python/swigfaiss.i:674: Error: Unable to find 'faiss/IndexIDMap.h'
+  third-party/faiss/faiss/python/swigfaiss.i:681: Error: Unable to find 'faiss/utils/approx_topk/mode.h'
+  third-party/faiss/faiss/python/swigfaiss.i:951: Error: Unable to find 'faiss/index_io.h'
+  third-party/faiss/faiss/python/swigfaiss.i:952: Error: Unable to find 'faiss/clone_index.h'
+  third-party/faiss/faiss/python/swigfaiss.i:956: Error: Unable to find 'faiss/AutoTune.h'
+  third-party/faiss/faiss/python/swigfaiss.i:957: Error: Unable to find 'faiss/index_factory.h'
+  third-party/faiss/faiss/python/swigfaiss.i:958: Error: Unable to find 'faiss/MatrixStats.h'
+  error: command 'swig' failed with exit code 1
+  error: subprocess-exited-with-error
+  
+  × Building wheel for faiss-cpu (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> No available output.
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  full command: /Users/sky/Desktop/project/M.Tech/ai-rag-software-engineering-assistant/backend/.venv/bin/python /Users/sky/Desktop/project/M.Tech/ai-rag-software-engineering-assistant/backend/.venv/lib/python3.11/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py build_wheel /var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/tmpu6frrnrk
+  cwd: /private/var/folders/xx/k4z9flg12jjbwx5h7sd1gq840000gn/T/pip-install-_yi8uokw/faiss-cpu_a81610f82b0044f1b34f2a8d9537b5c2
+  Building wheel for faiss-cpu (pyproject.toml): finished with status 'error'
+  ERROR: Failed building wheel for faiss-cpu
+Failed to build faiss-cpu
+error: failed-wheel-build-for-install
+
+× Failed to build installable wheels for some pyproject.toml based projects
+╰─> faiss-cpu

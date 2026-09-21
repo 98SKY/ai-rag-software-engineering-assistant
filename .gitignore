@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+
+.venv/
+node_modules/
+dist/
+
+__pycache__/
+*.py[cod]
+
+.DS_Store
+
+data/documents/*
+data/vector_store/*
+!data/documents/.gitkeep
+!data/vector_store/.gitkeep
