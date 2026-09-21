@@ -1,0 +1,8 @@
+The Payment Service is implemented using Spring Boot.
+
+Apache Kafka is used for asynchronous communication between
+the Payment Service and Notification Service.
+
+Redis is used to cache frequently requested payment status data.
+
+The service is deployed using Docker and Kubernetes.
