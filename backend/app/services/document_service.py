@@ -47,12 +47,19 @@ def extract_pdf_text(file_path: Path) -> str:
 
 
 def clean_text(text: str) -> str:
+    # Remove null/control characters while preserving
+    # useful whitespace such as newlines and tabs.
     text = text.replace("\x00", "")
+    text = re.sub(r"[\x01-\x08\x0b\x0c\x0e-\x1f\x7f]", "", text)
 
-    # Normalize spaces/tabs while preserving paragraph boundaries
+    # Normalize common PDF bullet characters.
+    text = text.replace("•", "- ")
+    text = text.replace("▪", "- ")
+    text = text.replace("●", "- ")
+
+    # Normalize spaces without destroying paragraphs.
     text = re.sub(r"[ \t]+", " ", text)
-
-    # Collapse excessive newlines
+    text = re.sub(r" *\n *", "\n", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
 
     return text.strip()

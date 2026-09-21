@@ -15,6 +15,7 @@ class AskRequest(BaseModel):
 
 
 class SourceReference(BaseModel):
+    source_number: int
     chunk_id: str
     document_id: str
     filename: str
@@ -22,7 +23,17 @@ class SourceReference(BaseModel):
     score: float
 
 
+class RetrievalMetadata(BaseModel):
+    top_score: float | None
+    top_k_requested: int
+    chunks_retrieved: int
+    retrieval_time_ms: float
+    generation_time_ms: float
+    total_time_ms: float
+
+
 class AskResponse(BaseModel):
     question: str
     answer: str
     sources: list[SourceReference]
+    retrieval: RetrievalMetadata
