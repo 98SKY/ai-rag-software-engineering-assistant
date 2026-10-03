@@ -53,7 +53,7 @@ function ChatMessage({
           </div>
         )}
 
-        {/* Retrieval performance */}
+        {/* Retrieval performances */}
         <RetrievalMetrics
           retrieval={item.response.retrieval}
         />
