@@ -8,7 +8,6 @@ import app.models  # noqa: F401
 from app.api.v1 import api_router
 from app.core.database import Base, engine
 
-
 load_dotenv()
 
 Base.metadata.create_all(bind=engine)
@@ -22,14 +21,12 @@ app = FastAPI(
 frontend_url = os.getenv(
     "FRONTEND_URL",
     "http://localhost:5173",
-)
+).rstrip("/")
 
 allowed_origins = [
     "http://localhost:5173",
+    frontend_url,
 ]
-
-if frontend_url not in allowed_origins:
-    allowed_origins.append(frontend_url)
 
 app.add_middleware(
     CORSMiddleware,
@@ -39,10 +36,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(
-    api_router,
-    prefix="/api/v1",
-)
+app.include_router(api_router, prefix="/api/v1")
 
 
 @app.get("/")
