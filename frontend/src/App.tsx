@@ -12,6 +12,7 @@ import {
   askQuestion,
   getDocuments,
   uploadDocument,
+  deleteDocument
 } from "./services/api";
 
 import type { Document } from "./types/api";
@@ -36,6 +37,9 @@ function App() {
   const [error, setError] = useState<string | null>(
     null,
   );
+
+  const [deletingId, setDeletingId] =
+    useState<string | null>(null);
 
   const loadDocuments = useCallback(async () => {
     try {
@@ -128,6 +132,40 @@ function App() {
     }
   }
 
+  async function handleDeleteDocument(
+    document: Document,
+  ) {
+    const confirmed = window.confirm(
+      `Delete "${document.filename}"?\n\n` +
+      "This will remove it from the knowledge base.",
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      setError(null);
+      setDeletingId(document.id);
+
+      await deleteDocument(document.id);
+
+      setDocuments((current) =>
+        current.filter(
+          (item) => item.id !== document.id,
+        ),
+      );
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Failed to delete document.",
+      );
+    } finally {
+      setDeletingId(null);
+    }
+  }
+
   return (
     <AppLayout
       documents={documents}
@@ -141,6 +179,8 @@ function App() {
       onSubmit={handleSubmit}
       onFileChange={handleFileChange}
       onDismissError={() => setError(null)}
+      deletingId={deletingId}
+      onDeleteDocument={handleDeleteDocument}
     />
   );
 }

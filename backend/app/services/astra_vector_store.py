@@ -106,3 +106,16 @@ def semantic_search(
     )
 
     return list(cursor)
+
+def delete_document_chunks(
+    document_id: str,
+) -> int:
+    collection = get_astra_collection()
+
+    result = collection.delete_many(
+        {
+            "document_id": document_id,
+        }
+    )
+
+    return result.deleted_count

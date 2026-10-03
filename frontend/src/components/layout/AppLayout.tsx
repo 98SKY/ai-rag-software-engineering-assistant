@@ -20,6 +20,8 @@ interface AppLayoutProps {
   uploading: boolean;
   asking: boolean;
 
+  deletingId: string | null;
+
   error: string | null;
 
   onQuestionChange: (value: string) => void;
@@ -30,6 +32,10 @@ interface AppLayoutProps {
 
   onFileChange: (
     event: ChangeEvent<HTMLInputElement>,
+  ) => void;
+
+  onDeleteDocument: (
+    document: Document,
   ) => void;
 
   onDismissError: () => void;
@@ -47,6 +53,8 @@ function AppLayout({
   onSubmit,
   onFileChange,
   onDismissError,
+  deletingId,
+  onDeleteDocument
 }: AppLayoutProps) {
   const [sidebarOpen, setSidebarOpen] =
     useState(false);
@@ -60,6 +68,8 @@ function AppLayout({
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
         onFileChange={onFileChange}
+        deletingId={deletingId}
+        onDeleteDocument={onDeleteDocument}
       />
 
       {sidebarOpen && (

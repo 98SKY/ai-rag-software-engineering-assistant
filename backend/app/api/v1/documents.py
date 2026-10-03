@@ -22,11 +22,15 @@ from app.services.document_service import (
     ensure_upload_directory,
     extract_text,
 )
+from app.services.astra_vector_store import (
+    delete_document_chunks,
+)
 from app.services.embedding_service import generate_embeddings
 from app.services.vector_store_factory import (
     get_vector_store_name,
     index_chunks,
 )
+
 
 
 router = APIRouter()
@@ -395,3 +399,67 @@ def get_document_chunks(
     )
 
     return chunks
+
+@router.delete(
+    "/documents/{document_id}",
+)
+def delete_document(
+    document_id: str,
+    db: Session = Depends(get_db),
+):
+    document = (
+        db.query(Document)
+        .filter(Document.id == document_id)
+        .first()
+    )
+
+    if document is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Document not found.",
+        )
+
+    vector_store = get_vector_store_name()
+
+    if vector_store == "astra":
+        delete_document_chunks(
+            document_id=document.id,
+        )
+
+    elif vector_store == "faiss":
+        raise HTTPException(
+            status_code=501,
+            detail=(
+                "Direct document deletion is not yet "
+                "implemented for FAISS."
+            ),
+        )
+
+    stored_path = Path(
+        "data/documents"
+    ) / document.stored_filename
+
+    # Delete chunks explicitly so this does not depend
+    # on ORM cascade configuration.
+    (
+        db.query(DocumentChunk)
+        .filter(
+            DocumentChunk.document_id
+            == document.id
+        )
+        .delete(
+            synchronize_session=False,
+        )
+    )
+
+    db.delete(document)
+    db.commit()
+
+    if stored_path.exists():
+        stored_path.unlink()
+
+    return {
+        "document_id": document_id,
+        "filename": document.filename,
+        "message": "Document deleted successfully.",
+    }

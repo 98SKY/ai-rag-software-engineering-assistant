@@ -1,0 +1,354 @@
+AI-POWERED INTELLIGENT SOFTWARE ENGINEERING ASSISTANT USING
+RETRIEVAL-AUGMENTED GENERATION (RAG) M.Tech Final Semester Project – PPT
+Reference Notes
+
+1.  PROJECT TITLE AI-Powered Intelligent Software Engineering Assistant
+    Using Retrieval-Augmented Generation (RAG) Research Area: Artificial
+    Intelligence
+
+2.  PROJECT OVERVIEW The project develops an intelligent software
+    engineering assistant that answers questions using project-specific
+    technical documents. Software engineering knowledge is commonly
+    distributed across technical documentation, requirements, API
+    specifications, architecture notes, coding standards, deployment
+    documents, and project documentation.
+
+A general-purpose Large Language Model may not have access to private or
+project-specific information and may generate plausible but unsupported
+answers. The proposed system uses Retrieval-Augmented Generation (RAG):
+it retrieves relevant information from uploaded project documents and
+supplies that evidence as context to an LLM.
+
+The response includes a generated answer, retrieved source references,
+similarity/retrieval information, retrieval latency, generation latency,
+and total latency.
+
+3.  PROBLEM STATEMENT Software engineering teams generate large amounts
+    of technical information distributed across multiple documents and
+    systems. Traditional keyword search can fail when a developer asks a
+    question using wording different from the source. General LLMs may
+    not know private or recently updated project information and can
+    generate unsupported information.
+
+Research problem: How can Retrieval-Augmented Generation be used to
+build an intelligent software engineering assistant that retrieves
+relevant information from project-specific technical documents and
+generates answers grounded in the retrieved evidence?
+
+4.  OBJECTIVES
+
+-   Build a document ingestion pipeline.
+-   Extract and clean uploaded document text.
+-   Create overlapping chunks.
+-   Generate semantic embeddings.
+-   Store and retrieve embeddings using vector search.
+-   Retrieve relevant chunks for user questions.
+-   Generate answers using retrieved context and an LLM.
+-   Return source references.
+-   Measure retrieval, generation, and total latency.
+-   Compare LLM-only and RAG approaches.
+-   Evaluate Hit Rate, Precision, Recall, MRR, correctness,
+    groundedness, and citation accuracy.
+-   Study Top-K and chunk-size configurations.
+-   Compare FAISS and Astra DB.
+-   Evaluate unsupported-question behavior.
+
+5.  RESEARCH QUESTIONS RQ1: Does RAG improve answers to project-specific
+    software engineering questions compared with an LLM-only approach?
+    RQ2: How effectively does semantic vector retrieval identify
+    relevant information? RQ3: How does Top-K affect retrieval quality,
+    answer quality, and latency? RQ4: How does chunk size affect
+    retrieval quality and generated answers? RQ5: How effectively does
+    the system handle questions whose answers are absent from indexed
+    documents? RQ6: What are the retrieval, generation, and total
+    latency characteristics? RQ7: How do FAISS and Astra DB behave as
+    vector-search backends in the same RAG architecture?
+
+6.  WHY RAG? LLM-only: Question -> LLM -> Answer
+
+RAG: Question -> Semantic Retrieval -> Relevant Project Context -> LLM
+-> Answer + Sources
+
+RAG supplies dynamic project knowledge without retraining the LLM and
+provides evidence traceability. RAG does not guarantee
+hallucination-free answers.
+
+7.  SYSTEM ARCHITECTURE User -> React + TypeScript Frontend -> FastAPI
+    Backend -> RAG Service -> Embedding Service / Retrieval Service ->
+    MiniLM / FAISS or Astra DB -> Retrieved Chunks -> Context
+    Construction -> LLM Service -> Groq -> Answer + Sources + Metrics
+
+8.  DOCUMENT INGESTION Document Upload -> Validate -> Extract Text ->
+    Clean Text -> Chunk -> Generate Embeddings -> Vector Index ->
+    Persist Metadata -> Ready for Retrieval
+
+Supported formats: PDF, TXT, Markdown. Current chunk size: 1000
+characters. Chunk overlap: 200 characters.
+
+9.  QUERY PIPELINE User Question -> Query Embedding -> Semantic Search
+    -> Top-K Chunks -> Context with [Source N] -> LLM -> Answer +
+    Sources + Metrics
+
+Default Top-K: 5. Allowed Top-K: 1 to 10.
+
+10. EMBEDDINGS Model: sentence-transformers/all-MiniLM-L6-v2 Dimension:
+    384 Embeddings are normalized before indexing. Semantic retrieval
+    enables matching based on meaning rather than only exact keywords.
+
+11. VECTOR STORAGE Supported backends:
+
+-   FAISS
+-   Astra DB
+
+Selected through VECTOR_STORE=faiss or VECTOR_STORE=astra.
+
+12. FAISS FAISS is the local vector-search implementation. Index:
+    IndexFlatIP Dimension: 384 Normalized embeddings make inner-product
+    ranking equivalent to cosine-style ranking for unit vectors. SQLite
+    stores metadata and FAISS positional mappings.
+
+13. ASTRA DB Astra DB is the cloud vector-storage alternative.
+    Collection: software_engineering_chunks Dimension: 384 Metric:
+    cosine Records include chunk ID, document ID, filename, chunk index,
+    content, and vector. Embeddings are generated locally using MiniLM.
+
+14. DATABASE SQLite stores structured application metadata.
+    Relationship: Document one-to-many DocumentChunk. Document fields
+    include ID, filename, stored filename, content type, size, extracted
+    characters, chunk count, and created time. DocumentChunk includes
+    chunk ID, document ID, chunk index, content, character count, and
+    optional FAISS index. chunk_index is the position in the source
+    document; faiss_index is the vector position in FAISS.
+
+15. LLM Provider: Groq Model: openai/gpt-oss-20b The model is instructed
+    to use only retrieved context, avoid invented facts, state when
+    evidence is insufficient, keep answers technically accurate, and
+    reference sources when useful.
+
+16. FRONTEND React, TypeScript, Vite, React Markdown. Features: upload,
+    document list, chat, answer rendering, source cards, metrics,
+    responsive layout, mobile sidebar, internal chat scrolling, and
+    bottom question input.
+
+17. BACKEND Python, FastAPI, SQLAlchemy, SQLite, Sentence Transformers,
+    NumPy, PyTorch, FAISS, Astra DB client, Groq/OpenAI-compatible
+    client. Major services: document, embedding, vector store, vector
+    store factory, retrieval, RAG, LLM, database models, and REST API
+    routes.
+
+18. REST API Base prefix: /api/v1 GET / Root information GET
+    /api/v1/health Health GET /api/v1/documents List documents POST
+    /api/v1/documents/upload Upload/index document GET
+    /api/v1/documents/{id}/chunks Inspect chunks POST /api/v1/ask RAG
+    question answering
+
+/ask accepts question and top_k. It returns question, answer, sources,
+and retrieval metadata including top score, requested K, chunks
+retrieved, retrieval time, generation time, and total time.
+
+19. CONTROLLED EXAMPLE Test document: The Payment Service is implemented
+    using Spring Boot. Apache Kafka is used for asynchronous
+    communication between the Payment Service and Notification Service.
+    Redis is used to cache frequently requested payment status data. The
+    service is deployed using Docker and Kubernetes.
+
+Question: How does the Payment Service communicate with the Notification
+Service?
+
+Expected answer: Using Apache Kafka for asynchronous communication.
+
+This validates upload -> chunk -> embed -> index -> retrieve -> generate
+-> source.
+
+20. UNSUPPORTED QUESTION Example: Which cloud provider hosts the Payment
+    Service?
+
+If the controlled document does not specify a cloud provider, the
+assistant should say the documents do not provide sufficient information
+rather than inventing AWS, Azure, or GCP.
+
+21. EVALUATION Three areas: A. Retrieval quality: Hit Rate@K,
+    Precision@K, Recall@K, MRR. B. Generation quality: correctness,
+    groundedness, relevance, citation accuracy, abstention. C.
+    Performance: retrieval time, generation time, total time.
+
+22. METRICS Hit Rate@K: whether at least one relevant result appears in
+    Top-K.
+
+Precision@K = relevant chunks in Top-K / K.
+
+Recall@K = relevant chunks retrieved / total known relevant chunks.
+
+Reciprocal Rank = 1 / rank of first relevant result. MRR = mean
+Reciprocal Rank across questions.
+
+Correctness can use: 2 correct, 1 partially correct, 0 incorrect.
+
+Groundedness measures whether factual claims are supported by retrieved
+evidence.
+
+Citation Accuracy = correct supporting citations / total evaluated
+citations.
+
+23. BASELINE LLM-only: Question -> Same LLM -> Answer. RAG: Question ->
+    Retrieval -> Project Context -> Same LLM -> Answer.
+
+Keep questions, LLM, instructions, and evaluation rubric as consistent
+as practical. The main changed condition is availability of retrieved
+project context.
+
+24. EXPERIMENTS Top-K: K = 1, 3, 5, 10. Chunking examples: 500/100
+    overlap, 1000/200, 1500/300. FAISS vs Astra: keep documents,
+    questions, embedding model, chunking, and Top-K fixed; compare
+    relevance, ranking, retrieval metrics, latency, and operational
+    characteristics. Raw similarity scores from FAISS and Astra should
+    not be treated as directly comparable confidence values.
+
+25. TESTING Unit: cleaning, chunking, embedding dimension,
+    normalization. Integration: vector indexing, SQLite, Astra, RAG
+    orchestration. API: health, upload, list, ask, validation. Frontend:
+    upload, chat, source rendering, metrics, responsive behavior.
+    Regression: vector/metadata consistency. End-to-end: upload through
+    final answer.
+
+26. IMPORTANT DEVELOPMENT ISSUE A real FAISS/SQLite synchronization
+    problem occurred: FAISS vectors = 18 SQLite chunks = 9
+
+Some retrieved vector positions had no matching SQLite metadata. After
+consistent reset: FAISS vectors = 9 Database chunks = 9 Mapped chunks =
+9 Indexes = 0 to 8
+
+Lesson: reliable vector persistence and metadata consistency are
+important parts of a RAG system.
+
+27. LIMITATIONS
+
+-   Limited evaluation corpus.
+-   PDF/TXT/Markdown are primary formats.
+-   Character-based chunking.
+-   Single primary embedding model.
+-   No reranking.
+-   No complete hybrid lexical + vector retrieval.
+-   No distributed transaction across SQLite/vector storage.
+-   Prompt-based unsupported-question behavior is imperfect.
+-   RAG does not eliminate hallucination.
+-   Chunk-level citations.
+-   Limited conversational context.
+-   No streaming generation.
+-   External LLM dependency.
+-   Cloud vector retrieval has network dependency.
+-   Limited source-code-aware retrieval.
+-   No full enterprise authentication/authorization.
+-   No complete prompt-injection defense.
+-   Enterprise-scale behavior not yet demonstrated.
+
+28. FUTURE WORK
+
+-   Semantic/structure-aware chunking.
+-   Source-code-aware chunking.
+-   Hybrid vector + BM25 retrieval.
+-   Reranking.
+-   Evidence sufficiency detection.
+-   Claim-level grounding verification.
+-   Sentence/page-level citations.
+-   Conversational query rewriting.
+-   Streaming.
+-   Multiple embedding models.
+-   Local LLM comparison.
+-   Repository ingestion.
+-   Knowledge graphs.
+-   Multimodal engineering documents.
+-   Authentication/RBAC.
+-   Document-level authorization.
+-   Audit logging.
+-   Incremental indexing.
+-   Update/delete lifecycle.
+-   Reconciliation jobs.
+-   Larger evaluation dataset.
+-   User feedback.
+
+29. PROJECT CONTRIBUTION The project does not claim to invent RAG. Its
+    contribution is the design, implementation, and experimental
+    evaluation of a modular developer-oriented RAG assistant over
+    project-specific software engineering knowledge, with configurable
+    vector backends, source traceability, performance instrumentation,
+    retrieval evaluation, groundedness-oriented evaluation, and
+    unsupported-question analysis.
+
+30. RECOMMENDED PPT STRUCTURE Slide 1: Title Slide 2: Background Slide
+    3: Problem Statement Slide 4: Objectives Slide 5: Why RAG / Proposed
+    Solution Slide 6: System Architecture Slide 7: Technology Stack
+    Slide 8: Document Ingestion Slide 9: RAG Query Flow Slide 10:
+    Embeddings and Vector Storage Slide 11: Sample Use Case / Working
+    Demo Slide 12: Evaluation Methodology Slide 13: Experiments Slide
+    14: Actual Results and Charts Slide 15: Limitations Slide 16: Future
+    Work Slide 17: Conclusion
+
+31. PPT RESULT SLIDE RULE Do not invent experimental results. Add actual
+    measured values after running experiments. Useful charts:
+
+-   Top-K vs Recall
+-   Top-K vs Precision
+-   Top-K vs latency
+-   LLM-only vs RAG correctness
+-   LLM-only vs RAG groundedness
+-   FAISS vs Astra retrieval latency
+-   Unsupported-question abstention rate
+
+32. VIVA QUICK REFERENCE What is RAG? Retrieval-Augmented Generation
+    combines external information retrieval with LLM generation.
+
+Why RAG? To dynamically provide project-specific evidence to the LLM
+without retraining it.
+
+Embedding model? sentence-transformers/all-MiniLM-L6-v2.
+
+Embedding dimension? 384.
+
+Default chunk size / overlap? 1000 / 200 characters.
+
+Default Top-K? 5.
+
+Vector stores? FAISS and Astra DB.
+
+FAISS index? IndexFlatIP.
+
+Backend? Python + FastAPI.
+
+Frontend? React + TypeScript.
+
+Database? SQLite.
+
+LLM provider/model? Groq / openai/gpt-oss-20b.
+
+Main RAG endpoint? POST /api/v1/ask.
+
+Retrieval metrics? Hit Rate, Precision, Recall, MRR.
+
+Generation metrics? Correctness, groundedness, relevance, citation
+accuracy.
+
+Does RAG eliminate hallucination? No. It provides evidence but does not
+guarantee that every generated claim is supported.
+
+Baseline? Same LLM and questions without retrieved project context.
+
+Why not fine-tuning? The main need is dynamic project knowledge. RAG can
+update knowledge by indexing documents without retraining the LLM.
+
+Why is this an M.Tech project rather than only a chatbot? It implements
+and experimentally evaluates an AI retrieval-generation architecture,
+including retrieval metrics, RAG-vs-LLM baseline, Top-K/chunking
+experiments, groundedness, unsupported questions, vector-store
+comparison, and latency.
+
+33. CONCLUSION The project demonstrates an end-to-end RAG system for
+    software engineering knowledge by integrating document processing,
+    semantic embeddings, vector retrieval, metadata management, LLM
+    generation, source traceability, performance measurement, and
+    research evaluation.
+
+The implementation provides a foundation for studying how RAG can
+support project-specific software engineering question answering and can
+be extended toward a production-oriented enterprise developer knowledge
+assistant.

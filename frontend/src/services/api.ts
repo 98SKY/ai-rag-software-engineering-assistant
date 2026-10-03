@@ -87,3 +87,30 @@ export async function askQuestion(
 
   return handleResponse<AskResponse>(response);
 }
+
+export async function deleteDocument(
+  documentId: string,
+): Promise<void> {
+  const response = await fetch(
+    `${API_BASE_URL}/documents/${documentId}`,
+    {
+      method: "DELETE",
+    },
+  );
+
+  if (!response.ok) {
+    let message = "Failed to delete document.";
+
+    try {
+      const error = await response.json();
+
+      if (error.detail) {
+        message = error.detail;
+      }
+    } catch {
+      // Response was not JSON.
+    }
+
+    throw new Error(message);
+  }
+}

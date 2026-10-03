@@ -4,11 +4,15 @@ import DocumentCard from "./DocumentCard";
 
 interface DocumentListProps {
   documents: Document[];
+  deletingId: string | null;
+  onDelete: (document: Document) => void;
   loading: boolean;
 }
 
 function DocumentList({
   documents,
+  deletingId,
+  onDelete,
   loading,
 }: DocumentListProps) {
   if (loading) {
@@ -38,6 +42,10 @@ function DocumentList({
         <DocumentCard
           key={document.id}
           document={document}
+          deleting={
+            deletingId === document.id
+          }
+          onDelete={onDelete}
         />
       ))}
     </div>

@@ -9,6 +9,7 @@ interface SidebarProps {
   documents: Document[];
   loadingDocuments: boolean;
   uploading: boolean;
+  deletingId: string | null;
   open: boolean;
 
   onClose: () => void;
@@ -16,21 +17,26 @@ interface SidebarProps {
   onFileChange: (
     event: ChangeEvent<HTMLInputElement>,
   ) => void;
+
+  onDeleteDocument: (
+    document: Document,
+  ) => void;
 }
 
 function Sidebar({
   documents,
   loadingDocuments,
   uploading,
+  deletingId,
   open,
   onClose,
   onFileChange,
+  onDeleteDocument
 }: SidebarProps) {
   return (
     <aside
-      className={`sidebar ${
-        open ? "sidebar-open" : ""
-      }`}
+      className={`sidebar ${open ? "sidebar-open" : ""
+        }`}
     >
       <div className="brand">
         <div className="brand-icon">
@@ -69,6 +75,8 @@ function Sidebar({
 
       <DocumentList
         documents={documents}
+        deletingId={deletingId}
+        onDelete={onDeleteDocument}
         loading={loadingDocuments}
       />
 
