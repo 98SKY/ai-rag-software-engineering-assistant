@@ -23,14 +23,12 @@ frontend_url = os.getenv(
     "http://localhost:5173",
 ).rstrip("/")
 
-allowed_origins = [
-    "http://localhost:5173",
-    frontend_url,
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=[
+        "http://localhost:5173",
+        frontend_url,
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
